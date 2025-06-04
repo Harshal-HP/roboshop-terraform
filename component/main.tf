@@ -70,8 +70,7 @@ resource "null_resource" "ansible" {
       "sudo pip3.12 install ansible",
       "ansible-pull -i localhost, -U https://github.com/harshal-09-p/roboshop-ansible roboshop.yml -e env=dev -e app_name=${var.name}"
     ]
-  }
-  
+  } 
 }
 
 resource "azurerm_dns_a_record" "dns_record" {
