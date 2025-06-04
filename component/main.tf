@@ -56,6 +56,23 @@ resource "azurerm_virtual_machine" "vm" {
   }
 }
 
+resource "null_resource" "ansible" {
+  connection {
+    type     = "ssh"
+    user     = "harshal"
+    password = "harshal@12345"
+    host     = azurerm_network_interface.privateip.private_ip_address
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo dnf install python3.12 python3.12-pip -y",
+      "sudo pip3.12 install ansible"
+    ]
+  }
+  
+}
+
 resource "azurerm_dns_a_record" "dns_record" {
   name                  = "${var.name}-dev"
   zone_name             = var.zone
