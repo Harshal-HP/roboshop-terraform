@@ -21,3 +21,24 @@ variable "zone" {
 variable "azurerm_network_security_group_id" {
   default = "/subscriptions/4a491ea7-cd6d-4ec6-aa18-28b31973e70c/resourceGroups/devops_project_ecom/providers/Microsoft.Network/networkSecurityGroups/allow_all"
 }
+
+variable "databases" {
+  default    = {
+    mongodb  = {}
+    mysql    = {}
+    rabbitmq = {}
+    redis    = {}
+  }
+}
+
+variable "applications" {
+  default     = {
+    catalogue = {}
+    payment   = {}
+    shipping  = {}
+    dispatch  = {}
+    user      = {}
+    cart      = {}
+    frontend  = {}
+  } 
+}
