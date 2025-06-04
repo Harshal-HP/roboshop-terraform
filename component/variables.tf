@@ -1,0 +1,11 @@
+variable "name" {}
+
+variable "location" {}
+
+variable "rg_name" {}
+
+variable "image_id" {}
+
+variable "network_interface_id" {}
+
+variable "zone" {}

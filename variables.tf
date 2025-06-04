@@ -1,0 +1,20 @@
+variable "location" {
+  default = "UK West"
+}
+
+variable "rg_name" {
+  default = "devops_project_ecom"
+}
+
+variable "image_id" {
+  default = "/subscriptions/4a491ea7-cd6d-4ec6-aa18-28b31973e70c/resourceGroups/devops_project_ecom/providers/Microsoft.Compute/images/image"
+}
+
+variable "network_interface_id" {
+  default = "/subscriptions/4a491ea7-cd6d-4ec6-aa18-28b31973e70c/resourceGroups/devops_project_ecom/providers/Microsoft.Network/virtualNetworks/workstation-vnet/subnets/default"
+}
+
+variable "zone" {
+  default = "harshaldevops.online"
+}
+
