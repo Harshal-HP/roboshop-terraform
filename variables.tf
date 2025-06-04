@@ -18,3 +18,6 @@ variable "zone" {
   default = "harshaldevops.online"
 }
 
+variable "azurerm_network_security_group_id" {
+  default = "/subscriptions/4a491ea7-cd6d-4ec6-aa18-28b31973e70c/resourceGroups/devops_project_ecom/providers/Microsoft.Network/networkSecurityGroups/allow_all"
+}
