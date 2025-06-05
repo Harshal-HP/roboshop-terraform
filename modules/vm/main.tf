@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "privateip" {
 
 resource "azurerm_network_interface_security_group_association" "nsg-allow" {
   network_interface_id      = azurerm_network_interface.privateip.id
-  network_security_group_id = var.network_security_group_id
+  network_security_group_id = var.azurerm_network_security_group_id
 }
 
 resource "azurerm_virtual_machine" "vm" {
