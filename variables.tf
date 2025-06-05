@@ -1,40 +1,43 @@
-variable "rg_name" {
-  default = "devops_project_ecom"
-}
+# variable "rg_name" {
+#   default = "devops_project_ecom"
+# }
 
-variable "image_id" {
-  default = "/subscriptions/4a491ea7-cd6d-4ec6-aa18-28b31973e70c/resourceGroups/devops_project_ecom/providers/Microsoft.Compute/images/image"
-}
+# variable "image_id" {
+#   default = "/subscriptions/4a491ea7-cd6d-4ec6-aa18-28b31973e70c/resourceGroups/devops_project_ecom/providers/Microsoft.Compute/images/image"
+# }
 
-variable "network_interface_id" {
-  default = "/subscriptions/4a491ea7-cd6d-4ec6-aa18-28b31973e70c/resourceGroups/devops_project_ecom/providers/Microsoft.Network/virtualNetworks/workstation-vnet/subnets/default"
-}
+# variable "network_interface_id" {
+#   default = "/subscriptions/4a491ea7-cd6d-4ec6-aa18-28b31973e70c/resourceGroups/devops_project_ecom/providers/Microsoft.Network/virtualNetworks/workstation-vnet/subnets/default"
+# }
 
-variable "zone" {
-  default = "harshaldevops.online"
-}
+# variable "zone" {
+#   default = "harshaldevops.online"
+# }
 
-variable "azurerm_network_security_group_name" {
-  default = "allow_all"
-}
+# variable "azurerm_network_security_group_name" {
+#   default = "allow_all"
+# }
 
-variable "databases" {
-  default    = {
-    mongodb  = {}
-    mysql    = {}
-    rabbitmq = {}
-    redis    = {}
-  }
-}
+# variable "databases" {
+#   default    = {
+#     mongodb  = {}
+#     mysql    = {}
+#     rabbitmq = {}
+#     redis    = {}
+#   }
+# }
 
-variable "applications" {
-  default     = {
-    catalogue = {}
-    payment   = {}
-    shipping  = {}
-    dispatch  = {}
-    user      = {}
-    cart      = {}
-    frontend  = {}
-  } 
-}
+# variable "applications" {
+#   default     = {
+#     catalogue = {}
+#     payment   = {}
+#     shipping  = {}
+#     dispatch  = {}
+#     user      = {}
+#     cart      = {}
+#     frontend  = {}
+#   } 
+# }
+
+variable "rg_name" {}
+variable "location" {}
