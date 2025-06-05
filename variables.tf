@@ -46,3 +46,4 @@ variable "azurerm_network_security_group_name" {}
 variable "zone" {}
 variable "rg_name" {}
 variable "env" {}
+variable "location" {}

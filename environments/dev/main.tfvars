@@ -6,10 +6,18 @@ zone = "harshaldevops.online"
 azurerm_network_security_group_name = "allow_all"
 
 databases = {
-    mongodb  = {}
-    mysql    = {}
-    rabbitmq = {}
-    redis    = {}
+        mongodb  = {
+            rgname = "ukwest"
+        }
+        mysql    = {
+            rgname = "ukwest"
+        }
+        rabbitmq = {
+            rgname = "ukwest"
+        }
+        redis    = {
+            rgname = "ukwest"
+        }
   }
 
 applications = {
@@ -25,8 +33,5 @@ applications = {
 rg_name = {
     ukwest = {
         location = "UK West"
-    }
-    uksouth = {
-        location = "UK south"
     }
 }
