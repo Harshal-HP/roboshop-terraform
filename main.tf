@@ -31,5 +31,5 @@ module "databases" {
 # }
 
 output "print" {
-  value    = azurerm_resource_group.main
+  value    = module.resource-group.name
 }
