@@ -62,9 +62,9 @@ rg_name = {
 
 databases = {
     ukwest = {
-       name = "mongodb"
+       db_name = "mongodb"
     }
     uksouth = {
-        name = "mysql"
+        db_name = "mysql"
     }
   }

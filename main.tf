@@ -9,7 +9,7 @@ module "databases" {
   depends_on                          = [ module.resource-group ]
   for_each                            = var.databases 
   source                              = "./modules/vm"
-  name                                = each.value
+  name                                = each.value["db_name"]
   location                            = module.resource-group[each.key].location
   rg_name                             = module.resource-group[each.key].name
   image_id                            = var.image_id
