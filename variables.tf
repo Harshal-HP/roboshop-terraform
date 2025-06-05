@@ -40,9 +40,11 @@
 # }
 
 variable "databases" {}
+variable "applications" {}
 variable "image_id" {}
 variable "network_interface_id" {}
 variable "zone" {}
 variable "rg_name" {}
 variable "env" {}
 variable "azurerm_network_security_group_id" {}
+variable "dns_record_gp_name" {}
