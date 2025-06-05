@@ -1,3 +1,10 @@
+module "resource-group" {
+  for_each = var.rg_name
+  source   = "./modules/resource-group"
+  rg_name  = "roboshop-${each.key}-${var.env}"
+  location = each.value["location"]
+}
+
 # module "databases" {
 #   for_each                            = var.databases 
 #   source                              = "./component"
@@ -21,8 +28,6 @@
 #   azurerm_network_security_group_name = var.azurerm_network_security_group_name
 # }
 
-module "resource-group" {
-  source   = "./modules/resource-group"
-  rg_name  = var.rg_name
-  location = var.location
+output "print" {
+  value = module.resource-group
 }
