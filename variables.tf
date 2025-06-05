@@ -42,7 +42,7 @@
 variable "databases" {}
 variable "image_id" {}
 variable "network_interface_id" {}
-variable "azurerm_network_security_group_name" {}
 variable "zone" {}
 variable "rg_name" {}
 variable "env" {}
+variable "network_security_group_id" {}

@@ -15,7 +15,7 @@ module "databases" {
   image_id                            = var.image_id
   network_interface_id                = var.network_interface_id
   zone                                = var.zone
-  azurerm_network_security_group_name =  var.azurerm_network_security_group_name
+  network_security_group_id =  var.network_security_group_id
 }
 
 # module "applications" {
