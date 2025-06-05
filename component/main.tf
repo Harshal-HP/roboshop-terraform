@@ -1,13 +1,13 @@
 resource "azurerm_public_ip" "publicip" {
   name                  = var.name
-  location              = var.location
+  location              = data.azurerm_resource_group.rg.location
   resource_group_name   = var.rg_name
   allocation_method     = "Static"
 }
 
 resource "azurerm_network_interface" "privateip" {
   name                  = var.name
-  location              = var.location
+  location              = data.azurerm_resource_group.rg.location
   resource_group_name   = var.rg_name
 
   ip_configuration {
@@ -20,12 +20,12 @@ resource "azurerm_network_interface" "privateip" {
 
 resource "azurerm_network_interface_security_group_association" "nsg-allow" {
   network_interface_id      = azurerm_network_interface.privateip.id
-  network_security_group_id = var.azurerm_network_security_group_id
+  network_security_group_id = data.azurerm_network_security_group.nsg.id
 }
 
 resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
-  location                      = var.location
+  location                      = data.azurerm_resource_group.rg.location
   resource_group_name           = var.rg_name
   network_interface_ids         = [azurerm_network_interface.privateip.id]
   vm_size                       = "Standard_B2s"
