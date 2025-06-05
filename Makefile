@@ -2,7 +2,7 @@ dev-apply:
 	git pull
 	rm -rf .terraform/terraform.tfstate
 	terraform init -backend-config=environments/dev/state.tfvars
-	terraform plan 
+	terraform plan -var-file environments/dev/main.tfvars
 	terraform apply -auto-approve -var-file environments/dev/main.tfvars
 
 dev-destroy:
