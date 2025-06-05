@@ -31,5 +31,5 @@ module "resource-group" {
 # }
 
 output "print" {
-  value    = module.resource-group
+  value    = azurerm_resource_group.main
 }
