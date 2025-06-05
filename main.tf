@@ -1,9 +1,9 @@
-# module "resource-group" {
-#   for_each = var.rg_name
-#   source   = "./modules/resource-group"
-#   name  = "roboshop-${each.key}-${var.env}"
-#   location = each.value["location"]
-# }
+module "resource-group" {
+  for_each = var.rg_name
+  source   = "./modules/resource-group"
+  name  = "roboshop-${each.key}-${var.env}"
+  location = each.value["location"]
+}
 
 # module "databases" {
 #   for_each                            = var.databases 
