@@ -11,7 +11,7 @@ module "databases" {
   source                              = "./modules/vm"
   name                                = each.key
   location                            = module.resource-group[each.value["rgname"]].location
-  rg_name                             = module.resource-group[each.value].name
+  rg_name                             = module.resource-group[each.value["rgname"]].name
   image_id                            = var.image_id
   network_interface_id                = var.network_interface_id
   zone                                = var.zone
