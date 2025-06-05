@@ -26,7 +26,7 @@ rg_name = {
     ukwest = {
         location = "UK West"
     }
-    ukeast = {
-        location = "UK east"
+    uksouth = {
+        location = "UK south"
     }
 }
