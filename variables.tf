@@ -40,7 +40,7 @@
 # }
 
 variable "databases" {}
-#variable "applications" {}
+variable "applications" {}
 variable "image_id" {}
 variable "network_interface_id" {}
 variable "zone" {}
