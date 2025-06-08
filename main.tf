@@ -19,7 +19,8 @@ module "databases" {
   network_interface_id                = var.network_interface_id
   zone                                = var.zone
   azurerm_network_security_group_id   = var.azurerm_network_security_group_id
-  dns_record_gp_name                  = var.dns_record_gp_name    
+  dns_record_gp_name                  = var.dns_record_gp_name
+  env                                 = var.env
 }
 
 module "applications" {
@@ -33,5 +34,6 @@ module "applications" {
   network_interface_id                = var.network_interface_id
   zone                                = var.zone
   azurerm_network_security_group_id   =  var.azurerm_network_security_group_id
-  dns_record_gp_name                  = var.dns_record_gp_name 
+  dns_record_gp_name                  = var.dns_record_gp_name
+  env                                 = var.env
 }
