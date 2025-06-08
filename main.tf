@@ -37,5 +37,5 @@ module "databases" {
 #   azurerm_network_security_group_id   =  var.azurerm_network_security_group_id
 #   dns_record_gp_name                  = var.dns_record_gp_name
 #   env                                 = var.env
-    token                               = var.token
+#    token                               = var.token
 # }
