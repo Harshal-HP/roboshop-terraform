@@ -6,3 +6,4 @@ variable "location" {}
 variable "zone" {}
 variable "azurerm_network_security_group_id" {}
 variable "dns_record_gp_name" {}
+variable "env" {}

@@ -6,3 +6,8 @@ provider "azurerm" {
 terraform {
   backend "azurerm" {}
 }
+
+provider "vault" {
+  address = "http://vault.harshaldevops.online:8200"
+  token = var.token
+}

@@ -47,8 +47,8 @@ resource "azurerm_virtual_machine" "vm" {
   
   os_profile {
     computer_name  = var.name
-    admin_username = "harshal"
-    admin_password = "harshal@12345"
+    admin_username = data.vault_generic_secret.secret.data["username"]
+    admin_password = data.vault_generic_secret.secret.data["passowrd"]
   }
   
   os_profile_linux_config {
@@ -57,13 +57,11 @@ resource "azurerm_virtual_machine" "vm" {
 }
 
 resource "null_resource" "ansible" {
-  depends_on = [ 
-    azurerm_virtual_machine.vm
-   ]
+  depends_on = [ azurerm_virtual_machine.vm ]
   connection {
     type     = "ssh"
-    user     = "harshal"
-    password = "harshal@12345"
+    user     = data.vault_generic_secret.secret.data["username"]
+    password = data.vault_generic_secret.secret.data["passowrd"]
     host     = azurerm_network_interface.privateip.private_ip_address
   }
 
@@ -77,7 +75,7 @@ resource "null_resource" "ansible" {
 }
 
 resource "azurerm_dns_a_record" "dns_record" {
-  name                  = "${var.name}-dev"
+  name                  = "${var.name}-${var.env}"
   zone_name             = var.zone
   resource_group_name   = var.dns_record_gp_name
   ttl                   = 60
