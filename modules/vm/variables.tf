@@ -8,3 +8,4 @@ variable "azurerm_network_security_group_id" {}
 variable "dns_record_gp_name" {}
 variable "env" {}
 variable "token" {}
+variable "type" {}
