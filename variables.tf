@@ -49,3 +49,4 @@ variable "env" {}
 variable "azurerm_network_security_group_id" {}
 variable "dns_record_gp_name" {}
 variable "token" {}
+variable "aks" {}

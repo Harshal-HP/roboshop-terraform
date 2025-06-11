@@ -69,3 +69,9 @@ applications = {
 #         db_name = "mysql"
 #     }
 #   }
+
+aks = {
+    main-dev = {
+        rgname = "ukwest"
+    }
+}
