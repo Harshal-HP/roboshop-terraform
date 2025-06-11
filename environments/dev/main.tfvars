@@ -25,6 +25,9 @@ databases = {
     redis    = {
         rgname = "ukwest"
     }
+    dispatch  = {
+        rgname = "ukwest"
+    }
   }
 
 applications = {
@@ -35,9 +38,6 @@ applications = {
         rgname = "ukwest"
     }
     shipping  = {
-        rgname = "ukwest"
-    }
-    dispatch  = {
         rgname = "ukwest"
     }
     user      = {
