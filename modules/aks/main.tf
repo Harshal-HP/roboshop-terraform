@@ -15,14 +15,14 @@ resource "azurerm_kubernetes_cluster" "main" {
     type = "SystemAssigned"
   }
 
-  aci_connector_linux {
-    subnet_name = var.network_interface_id
-  }
+  # aci_connector_linux {
+  #   subnet_name = var.network_interface_id
+  # }
 
-  network_profile {
-    network_plugin = "azure"
-    service_cidr   = "10.100.0.0/24"
-    dns_service_ip = "10.100.0.10"
-  }
+  # network_profile {
+  #   network_plugin = "azure"
+  #   service_cidr   = "10.100.0.0/24"
+  #   dns_service_ip = "10.100.0.10"
+  # }
 
 }
