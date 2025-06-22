@@ -13,4 +13,8 @@ resource "azurerm_kubernetes_cluster" "main" {
   identity {
     type = "SystemAssigned"
   }
+
+  aci_connector_linux {
+    subnet_name = var.network_interface_id
+  }
 }
