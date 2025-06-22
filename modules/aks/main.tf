@@ -8,6 +8,7 @@ resource "azurerm_kubernetes_cluster" "main" {
     name       = "default"
     node_count = 1
     vm_size    = "Standard_B2s"
+    vnet_subnet_id = var.network_interface_id
   }
 
   identity {
@@ -23,4 +24,5 @@ resource "azurerm_kubernetes_cluster" "main" {
     service_cidr   = "10.100.0.0/24"
     dns_service_ip = "10.100.0.10"
   }
+
 }
