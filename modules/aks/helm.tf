@@ -5,7 +5,7 @@ resource "null_resource" "kubeconfig" {
 }
 
 resource "helm_release" "external-secrets" {
-  depends_on = [ null_resource.kubeconfig ]
+  depends_on = [null_resource.kubeconfig]
   name       = "external-secrets"
   repository = "https://charts.external-secrets.io"
   chart      = "external-secrets"
