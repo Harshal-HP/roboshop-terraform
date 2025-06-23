@@ -19,7 +19,7 @@ resource "helm_release" "external-secrets" {
   ]
 }
 
-resource "null_resource" "external-secrets-store" {
+resource "null_resource" "external-secrets-secret-store" {
   depends_on = [ helm_release.external-secrets ]
 
   provisioner "local-exec" {
