@@ -49,4 +49,6 @@ module "aks" {
   rg_name  = module.resource-group[each.value["rgname"]].name
   location = module.resource-group[each.value["rgname"]].location
   network_interface_id = var.network_interface_id
+  env = var.env
+  token = var.token
 }
