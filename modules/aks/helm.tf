@@ -23,30 +23,31 @@ resource "null_resource" "external-secrets-store" {
   depends_on = [ helm_release.external-secrets ]
   provisioner "local-exec" {
     command = <<TF
-        apiVersion: external-secrets.io/v1 <<KUBE
-        kind: ClusterSecretStore
-        metadata:
-            name: roboshop-${var.env}
-        spec:
-            provider:
-                vault:
-                    server: "http://vault-int.harshaldevops.online:8200"
-                    path: "roboshop-${var.env}"
-                    version: "v2"
-                    auth:
-                        tokenSecretRef:
-                            name: "vault-token"
-                            key: "token"
-                            namespace: devops
-        ---
-        apiVersion: v1
-        kind: Secret
-        metadata:
-            name: vault-token
-            namespace: devops
-        data:
-            token: ${base64encode(var.token)}
-    KUBE
-    TF
+kubectl apply -f - <<KUBE
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+    name: roboshop-${var.env}
+spec:
+    provider:
+        vault:
+            server: "http://vault-int.harshaldevops.online:8200"
+            path: "roboshop-${var.env}"
+            version: "v2"
+                auth:
+                    tokenSecretRef:
+                        name: "vault-token"
+                        key: "token"
+                        namespace: devops
+---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: vault-token
+    namespace: devops
+data:
+    token: ${base64encode(var.token)}
+KUBE       
+TF
   }
 }
