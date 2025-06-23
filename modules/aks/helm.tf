@@ -20,7 +20,7 @@ resource "helm_release" "external-secrets" {
 }
 
 resource "null_resource" "external-secrets-secret-store" {
-  depends_on = [ helm_release.external-secrets ]
+  depends_on = [helm_release.external-secrets]
 
   provisioner "local-exec" {
     command = <<TF
@@ -37,8 +37,8 @@ spec:
       version: "v2"
       auth:
         tokenSecretRef:
-          name: "vault-token"
-          key: "token"
+          name: vault-token
+          key: token
           namespace: devops
 ---
 apiVersion: v1
@@ -48,7 +48,7 @@ metadata:
   namespace: devops
 data:
   token: ${base64encode(var.token)}
-EOF       
+EOF
 TF
   }
 }
