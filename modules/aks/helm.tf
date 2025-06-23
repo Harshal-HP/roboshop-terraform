@@ -19,44 +19,11 @@ resource "helm_release" "external-secrets" {
   ]
 }
 
-# resource "null_resource" "external-secrets-store" {
-#   depends_on = [ helm_release.external-secrets ]
-#   provisioner "local-exec" {
-#     command =<<TF
-# kubectl apply -f - <<EOF
-# apiVersion: external-secrets.io/v1
-# kind: ClusterSecretStore
-# metadata:
-#   name: roboshop-${var.env}
-# spec:
-#   provider:
-#     vault:
-#       server: "http://vault-int.harshaldevops.online:8200"
-#       path: "roboshop-${var.env}"
-#       version: "v2"
-#       auth:
-#         tokenSecretRef:
-#           name: "vault-token"
-#           key: "token"
-#           namespace: devops
-# ---
-# apiVersion: v1
-# kind: Secret
-# metadata:
-#   name: vault-token
-#   namespace: devops
-# data:
-#   token: ${base64encode(var.token)}
-# EOF       
-# TF
-#   }
-# }
-
 resource "null_resource" "external-secrets-store" {
-  depends_on = [helm_release.external-secrets]
-
+  depends_on = [ helm_release.external-secrets ]
+  
   provisioner "local-exec" {
-    command = <<TF
+    command =<<TF
 kubectl apply -f - <<EOF
 apiVersion: external-secrets.io/v1
 kind: ClusterSecretStore
@@ -70,8 +37,8 @@ spec:
       version: "v2"
       auth:
         tokenSecretRef:
-          name: vault-token
-          key: token
+          name: "vault-token"
+          key: "token"
           namespace: devops
 ---
 apiVersion: v1
@@ -81,7 +48,41 @@ metadata:
   namespace: devops
 data:
   token: ${base64encode(var.token)}
-EOF
+EOF       
 TF
   }
 }
+
+# resource "null_resource" "external-secrets-store" {
+#   depends_on = [helm_release.external-secrets]
+
+#   provisioner "local-exec" {
+#     command = <<TF
+# kubectl apply -f - <<EOF
+# apiVersion: external-secrets.io/v1
+# kind: ClusterSecretStore
+# metadata:
+#   name: roboshop-${var.env}
+# spec:
+#   provider:
+#     vault:
+#       server: "http://vault-int.harshaldevops.online:8200"
+#       path: "roboshop-${var.env}"
+#       version: "v2"
+#       auth:
+#         tokenSecretRef:
+#           name: vault-token
+#           key: token
+#           namespace: devops
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: vault-token
+#   namespace: devops
+# data:
+#   token: ${base64encode(var.token)}
+# EOF
+# TF
+#   }
+# }
