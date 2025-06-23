@@ -57,7 +57,7 @@ resource "null_resource" "external-secrets-store" {
 
   provisioner "local-exec" {
     command = <<TF
-cat <<EOF | kubectl apply -f -
+kubectl apply -f - <<EOF
 apiVersion: external-secrets.io/v1
 kind: ClusterSecretStore
 metadata:
