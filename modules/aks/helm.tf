@@ -47,7 +47,7 @@ metadata:
   name: vault-token
   namespace: devops
 data:
-  token: ${base64encode( var.token )}
+  token: ${ base64encode( var.token ) }
 EOF
 TF
   }
