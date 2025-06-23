@@ -23,7 +23,7 @@ resource "null_resource" "external-secrets-store" {
   depends_on = [ helm_release.external-secrets ]
   provisioner "local-exec" {
     command = <<TF
-kubectl apply -f - <<KUBE
+kubectl apply -f - <<EOF
 apiVersion: external-secrets.io/v1
 kind: ClusterSecretStore
 metadata:
@@ -47,7 +47,7 @@ metadata:
   namespace: devops
 data:
   token: ${base64encode(var.token)}
-KUBE       
+EOF       
 TF
   }
 }
