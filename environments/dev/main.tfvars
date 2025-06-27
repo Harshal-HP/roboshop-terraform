@@ -73,5 +73,17 @@ applications = {
 aks = {
     main-dev = {
         rgname = "ukwest"
+        default_node_pool = {
+            nodes = 1 
+            vm_size = "Standard_B2s"
+        }
+        app_node_pool = {
+            one = {
+                min_count = 1
+                max_count = 5
+                vm_size = "Standard_B2s"
+                auto_scaling_enabled = true
+            }
+        }
     }
 }

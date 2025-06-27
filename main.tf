@@ -51,4 +51,6 @@ module "aks" {
   network_interface_id = var.network_interface_id
   env = var.env
   token = var.token
+  default_node_pool = each.value["default_node_pool"]
+  app_node_pool = each.value["app_node_pool"]
 }
