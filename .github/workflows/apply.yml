@@ -11,7 +11,7 @@ jobs:
       - name: Import Secrets Azure 
         uses: hashicorp/vault-action@v2.4.0
         with:
-          url: https://vault-int.harshaldevops.online:8200
+          url: http://vault-int.harshaldevops.online:8200
           token: ${{ secrets.vault_token }}
           secrets: |
             roboshop-infra/data/azure-sp ARM_CLIENT_ID | ARM_CLIENT_ID ;
