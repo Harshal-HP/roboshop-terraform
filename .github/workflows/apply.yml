@@ -1,0 +1,23 @@
+name: Dev - Apply
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [workflow_dispatch]
+jobs:
+  TerraformApply:
+    runs-on: self-hosted
+    env: 
+      vault_token: ${{ secrets.vault_token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import Secrets Azure 
+        uses: hashicorp/vault-action@v2.4.0
+        with:
+          url: https://vault.harshaldevops.online:8200
+          token: ${vault_token}
+          secrets: |
+            roboshop-infra/data/azure-sp ARM_CLIENT_ID | ARM_CLIENT_ID ;
+            roboshop-infra/data/azure-sp ARM_CLIENT_SECRET | ARM_CLIENT_SECRET ;
+            roboshop-infra/data/azure-sp ARM_SUBSCRIPTION_ID | ARM_SUBSCRIPTION_ID ;
+            roboshop-infra/data/azure-sp ARM_TENANT_ID | ARM_TENANT_ID ;
+      - name: Terraform Apply
+        run: |
+          make dev-apply token=${vault_token}
