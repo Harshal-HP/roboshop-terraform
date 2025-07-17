@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Import Secrets Azure 
-        uses: hashicorp/vault-action@v2.4
+        uses: hashicorp/vault-action
         with:
           url: https://vault.harshaldevops.online:8200
           token: ${{ secrets.vault_token }}
