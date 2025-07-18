@@ -24,6 +24,11 @@ resource "azurerm_kubernetes_cluster" "main" {
     service_cidr   = "10.100.0.0/24"
     dns_service_ip = "10.100.0.10"
   }
+  lifecycle {
+    ignore_changes = [
+      default_node_pool
+    ]
+  }
 }
 
 resource "azurerm_kubernetes_cluster_node_pool" "main" {
@@ -37,4 +42,5 @@ resource "azurerm_kubernetes_cluster_node_pool" "main" {
   auto_scaling_enabled = each.value[ "auto_scaling_enabled" ]
   node_labels = each.value["node_labels"]
   temporary_name_for_rotation = "${each.key}temp"
+  vnet_subnet_id = var.network_interface_id
 }
