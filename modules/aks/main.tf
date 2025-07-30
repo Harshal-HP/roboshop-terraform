@@ -44,3 +44,10 @@ resource "azurerm_kubernetes_cluster_node_pool" "main" {
   temporary_name_for_rotation = "${each.key}temp"
   vnet_subnet_id = var.network_interface_id
 }
+
+resource "azurerm_role_assignment" "ACRtoAKS" {
+  depends_on                       = [ azurerm_kubernetes_cluster.main]
+  principal_id                     = azurerm_kubernetes_cluster.main.kubelet_identity[0].object_id
+  role_definition_name             = "AcrPull"
+  scope                            = data.azurerm_container_registry.acr.id
+}
