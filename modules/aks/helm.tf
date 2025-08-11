@@ -63,7 +63,7 @@ TF
 }
 
 resource "helm_release" "argocd" {
-  depends_on = [null_resource.kubeconfig]
+  depends_on = [null_resource.external-secrets-secret-store]
   name       = "argo-cd"
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
