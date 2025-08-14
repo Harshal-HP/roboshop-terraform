@@ -62,6 +62,7 @@ TF
   }
 }
 
+## ArgoCD
 resource "helm_release" "argocd" {
   depends_on = [null_resource.external-secrets-secret-store]
   name       = "argo-cd"
@@ -74,5 +75,20 @@ resource "helm_release" "argocd" {
       name  = "server.service.type"
       value = "LoadBalancer"
     }
+  ]
+}
+
+## Filebeat Helm Chart
+resource "helm_release" "filebeat" {
+
+  depends_on = [null_resource.ecternal-secrets-secret-store]
+  name       = "filebeat"
+  repository = "https://helm.elastic.co"
+  chart      = "filebeat"
+  namespace  = "kube-system"
+  wait       = "false"
+
+  values = [
+    file("${path.module}/helm-values/filebeat.yml")
   ]
 }
