@@ -81,7 +81,7 @@ resource "helm_release" "argocd" {
 ## Filebeat Helm Chart
 resource "helm_release" "filebeat" {
 
-  depends_on = [null_resource.ecternal-secrets-secret-store]
+  depends_on = [null_resource.external-secrets-secret-store]
   name       = "filebeat"
   repository = "https://helm.elastic.co"
   chart      = "filebeat"
