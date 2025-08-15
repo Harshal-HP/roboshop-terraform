@@ -85,10 +85,25 @@ resource "helm_release" "filebeat" {
   name       = "filebeat"
   repository = "https://helm.elastic.co"
   chart      = "filebeat"
-  namespace  = "kube-system"
+  namespace  = "devops"
   wait       = "false"
 
   values = [
     file("${path.module}/helm-values/filebeat.yml")
+  ]
+}
+
+## Prometheus Helm chart 
+resource "helm_release" "filebeat" {
+
+  depends_on = [null_resource.external-secrets-secret-store]
+  name       = "prom-stack"
+  repository = "https://prometheus-community.github.io/helm-charts"
+  chart      = "kube-prometheus-stack"
+  namespace  = "devops"
+  wait       = "false"
+
+  values = [
+    file("${path.module}/helm-values/prometheus.yml")
   ]
 }
