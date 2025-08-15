@@ -94,7 +94,7 @@ resource "helm_release" "filebeat" {
 }
 
 ## Prometheus Helm chart 
-resource "helm_release" "filebeat" {
+resource "helm_release" "prometheus" {
 
   depends_on = [null_resource.external-secrets-secret-store]
   name       = "prom-stack"
