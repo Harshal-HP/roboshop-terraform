@@ -19,6 +19,20 @@ daemonset:
               or:
                 - equals:
                     kubernetes.labels.app: "shipping"
+      - type: container
+        paths:
+          - /var/log/containers/*app_shipping*.log
+        processors:
+        - add_kubernetes_metadata:
+            host: ${NODE_NAME}
+            matchers:
+            - logs_path:
+                logs_path: "/var/log/containers/"
+        - drop_event:
+            when:
+              not:
+                - equals:
+                    kubernetes.labels.app: "shipping"
       output.logstash:
         hosts: 'elk-stack-int.harshaldevops.online:5044'
 # daemonset:
