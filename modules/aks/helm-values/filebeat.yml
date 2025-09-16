@@ -19,6 +19,7 @@ daemonset:
               or:
                 - equals:
                     kubernetes.labels.app: "shipping"
+                    
       - type: container
         paths:
           - /var/log/containers/*shipping*.log
