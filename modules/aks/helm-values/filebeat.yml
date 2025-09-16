@@ -14,6 +14,11 @@ daemonset:
             matchers:
             - logs_path:
                 logs_path: "/var/log/containers/"
+        - drop_event:
+            when:
+              or:
+                - equals:
+                    kubernetes.labels.app: "shipping"
       output.logstash:
         hosts: 'elk-stack-int.harshaldevops.online:5044'
 # daemonset:
