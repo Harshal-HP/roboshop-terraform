@@ -14,10 +14,6 @@ daemonset:
               matchers:
               - logs_path:
                   logs_path: "/var/log/containers/"
-          multiline.type: pattern
-          multiline.pattern: "^[0-9][0-9][0-9][0-9]"
-          multiline.negate: true
-          multiline.match: after
       output.logstash:
         hosts: 'elk-stack-int.harshaldevops.online:5044'
 # daemonset:
