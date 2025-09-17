@@ -61,8 +61,6 @@ daemonset:
       output.logstash:
         hosts: 'elk-stack-int.harshaldevops.online:5044'
 
-#
-
 # ---
 # daemonset:
 #   # Annotations to apply to the daemonset
